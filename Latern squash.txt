@@ -1,0 +1,8 @@
+Latern squash
+Bug squash
+Buckeye jump
+Brutus jump
+Buckeye bounce
+Brutus bounce
+Buckeye boost
+Brutus boost
