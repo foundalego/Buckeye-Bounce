@@ -6,6 +6,7 @@
 #include <fstream>
 
 class score {
+//initialize variables
     private:
     int score_height; //horiziontal position of score -> used to calculate max score
     std::ifstream infile;
@@ -25,5 +26,6 @@ class score {
 };
 
 #endif
+
 
 ////////END OF score.h///////
