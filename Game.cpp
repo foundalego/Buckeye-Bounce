@@ -9,10 +9,11 @@
 // game constructor
 Game::Game()
     :gameover(false), exit(false), orderCount(0), springed(0){
-        order = {light, light, light, light, light, light, light, light,  // 8
-                light_t, mid, mid, mid, mid, mid, mid, mid, mid, mid, mid, mid, mid, //13
-                mid_t, moon, stars, stars, stars, stars, stars, stars, //8
-                stars, stars, stars, stars, stars, stars, stars_t, space}; //7
+        order = {light, light, light, light, light, light, light, light,  // 8 runs of the "light" bg
+                light_t, mid, mid, mid, mid, mid, mid, mid, mid, mid, mid, mid, mid, //13 runs of the "mid" bg
+                mid_t, moon, stars, stars, stars, stars, stars, stars, //8 runs of the "dark" bg
+                stars, stars, stars, stars, stars, stars, stars_t, space}; //7 runs of the "space" bg variations
+        //Open the appropriate images in correspondence with their pages
         how_to.Open("How_To_Button_Resize.png");
         play.Open("Play_Button_Resize.png");
         stats.Open("Stats_Button_Resize.png");
@@ -109,7 +110,7 @@ void Game::Run(){
     Shutdown();
     
 }
-
+//Stats page
 void Game::Stats(){
     while(!exit){
         Sleep(100);
@@ -123,6 +124,7 @@ void Game::Stats(){
         close.Draw(300,800);
         LCD.Update();
         while (!LCD.Touch(&mouse_x, &mouse_y));
+        //if mouse clicks in the exit area
         if (mouse_x > 320 &&
             mouse_x < 380 &&
             mouse_y > 820 &&
@@ -132,7 +134,7 @@ void Game::Stats(){
     }
     exit = !exit;
 }
-
+//establish credits page
 void Game::Credits(){
     while(!exit){
         Sleep(100);
@@ -144,6 +146,7 @@ void Game::Credits(){
         close.Draw(300,800);
         LCD.Update();
         while (!LCD.Touch(&mouse_x, &mouse_y));
+        //if user clicks the exit button
         if (mouse_x > 320 &&
             mouse_x < 380 &&
             mouse_y > 820 &&
@@ -153,13 +156,14 @@ void Game::Credits(){
     }
     exit = !exit;
 }
-
+//establish instructions page
 void Game::HowTo(){
     while(!exit){
         Sleep(100);
         LCD.Clear();
         background.Draw(0,0);
         LCD.SetFontScale(1.0);
+        //Write instructions
         LCD.WriteLine("Goal: Climb as high as possible");
         LCD.WriteLine("Controls: A for left, D for right");
         LCD.WriteLine("Landing on a platform will make you jump");
@@ -178,9 +182,7 @@ void Game::HowTo(){
     exit = !exit;
 }
 
-// loads screen and maybe include a load screen whiel eveyrthing else is setting up?
-void Game::Initialize(){
-    Random.Seed();
+// loads screen
     for (int i = 0; i < 8; i++)
     {
         AddPlatform(normal, (Random.RandInt()%320 + 10), i*100);
@@ -267,6 +269,7 @@ void Game::Logic(){
     isGameOver();
 }
 
+//In the event that the character falls:
 void Game::isGameOver(){
     if (dood.get_player_y() > 850){
         SetGameOverTrue();
@@ -447,7 +450,7 @@ int Game::checkPlatCollision(platform& plat){
     }
     
 
-    //spirng collision logic
+    //spring collision logic
     else if(plat.get_identity() == spring){
         if (dood.get_player_x() + 45 > plat.get_x() - 25 && 
             dood.get_player_x() + 45 < plat.get_x() + plat.get_w() - 25 && 
@@ -473,7 +476,6 @@ int Game::checkPlatCollision(platform& plat){
     }
 
     //dissapearing platform collision logic
-    
     else if (plat.get_identity() == dissapearing){
         if (dood.get_player_x() + 45 > plat.get_x() && 
             dood.get_player_x() + 45 < plat.get_x() + plat.get_w() && 
@@ -674,7 +676,7 @@ void Game::pickSection(int score){
         futureSection();
     }
 }
-
+//establish set up of the usual platform
 void Game::genericSection(){
     for (int i = 0; i < 8; i++)
     {
@@ -726,4 +728,5 @@ void Game::futureSection(){
     {
         AddPlatform(futuristic_good, (Random.RandInt()%320 + 10), -860 + i*110);
     }
+
 }
