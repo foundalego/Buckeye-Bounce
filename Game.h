@@ -10,6 +10,7 @@
 #include <vector>
 
 class Game{
+//initialize variables
     public:
     Game();
     void Menu();
@@ -64,5 +65,6 @@ class Game{
     ///// DECLARING ALL IMAGE FILES /////
     FEHImage play, stats, how_to, credits, close, background, banner, score_card, logo, brutus, bug_1;
 };
+
 
 #endif
