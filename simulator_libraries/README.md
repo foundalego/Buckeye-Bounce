@@ -22,3 +22,6 @@ We assume that student source code will be in a *parent directory* of these libr
     └── ...
 
 Copyright 2022 Fundamentals of Engineering for Honors Program, Department of Engineering Education, The Ohio State University.
+
+Added score, platform and character headers and objects myself onto this library file. They weren't working on their own so I went and chanegd the makefile and had to put them in here. A little janky but it works.
+
