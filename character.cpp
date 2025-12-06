@@ -2,6 +2,7 @@
 #include "FEHLCD.h"
 
 character::character()
+//get all character sprites for Brutus
     :player_x(200), player_y(500), velocity_x(0), velocity_y(0), count(0), collide(true)
     {
         brutus_static.Open("Brutus_Static_Resize.png");
@@ -97,7 +98,7 @@ void character::end_animation(){
     velocity_y = 20;
     player_y += velocity_y;
 }
-
+//establish animations based on velocity
 void character::draw_player(){
     if (velocity_y < 0){
         brutus1.Draw(player_x, player_y);
@@ -117,4 +118,5 @@ void character::reset(){
     player_y = 500;
     velocity_x = 0;
     velocity_y = 0;
+
 }
