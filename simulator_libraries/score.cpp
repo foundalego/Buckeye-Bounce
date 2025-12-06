@@ -9,7 +9,7 @@ score::score()
 void score::update_score(int pixels_moved){
     score_height+=pixels_moved;
 }
-
+//make sure score doesn't carry over
 void score::reset_score(){
     infile.clear();
     infile.open("highscores.txt");
@@ -61,7 +61,7 @@ void score::reset_score(){
     
     score_height = LCD_HEIGHT;
 }
-
+//the top ten scores
 void score::drawScores(){
     infile.clear();
     infile.open("highscore_name.txt");
@@ -105,5 +105,6 @@ int score::get_high_score(){
     infile.close();
     return a;
 }
+
 
 ////////END OF score.cpp///////
