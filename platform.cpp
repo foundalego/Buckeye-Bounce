@@ -5,6 +5,7 @@
 platform::platform()
     :plat_type(normal), position_x(200), position_y(500), broken_state(false), width(60), height(20), moving_center(0), needs_erased(0), jumped(false), render(true), collide(true), frame(0)
     {
+        //platforms of this size
         if (plat_type == normal || plat_type == broken || plat_type == moving_x || plat_type == moving_y || moving_broken){
             width = 98;
             height = 15;
@@ -12,6 +13,7 @@ platform::platform()
             //standard_plat_2.Open("Good_Platform2_Resize.png");
             
         }
+            //platforms of the other size
         else if (plat_type == dissapearing || plat_type == futuristic_good || plat_type == futuristic_broken){
             width = 50;
             height = 17;
@@ -36,6 +38,7 @@ platform::platform()
            height = 28;
            
         }
+        //import graphics
         evil_plat.Open("Evil_Platform_Resize.png");
         cloud_plat.Open("Cloud_Platform_Resize.png");
         lantern_l.Open("Spotted_Lanternfly_Face_Left.png");
@@ -93,6 +96,7 @@ platform::platform(identity type, int x)
         else if(plat_type == moving_broken || floating_bug && position_x < 200){
             x_vel = 1;
         }
+        //import graphics
         cloud_plat.Open("Cloud_Platform_Resize.png");
         evil_plat.Open("Evil_Platform_Resize.png");
         lantern_l.Open("Spotted_Lanternfly_Face_Left.png");
@@ -136,7 +140,7 @@ platform::platform(identity type, int x, int y)
            height = 28;
            
         }
-        //intitial velocity for moving x platforms
+        //initial velocity for moving x platforms
         if (plat_type == moving_x || floating_bug && position_x > 200){
             x_vel = -1;
         }
@@ -150,6 +154,7 @@ platform::platform(identity type, int x, int y)
         else if(plat_type == moving_broken || floating_bug && position_x < 200){
             x_vel = 1;
         }
+        //import graphics
         evil_plat.Open("Evil_Platform_Resize.png");
         cloud_plat.Open("Cloud_Platform_Resize.png");
         lantern_l.Open("Spotted_Lanternfly_Face_Left.png");
@@ -164,7 +169,7 @@ platform::platform(identity type, int x, int y)
         future_g.Open("Future_Platform_Good.png");
         future_b.Open("Future_Platform_Evil.png");
     };
- 
+ //to get the location and specs of platform
 int platform::get_x(){
     return position_x;
 }
@@ -196,7 +201,7 @@ bool platform::getCollide(){
 bool platform::getRender(){
     return render;
 }
-
+//to place the platform on screen
 void platform::draw_platform(){
     if (plat_type == normal){
         standard_plat_1.Draw(position_x, position_y);
@@ -292,7 +297,7 @@ int platform::platform_update(){
         position_x+=x_vel;
     }
 
-    //screen movment
+    //screen movement
     //if score has changed, move platforms by that much
     
     if (jumped){
@@ -316,7 +321,7 @@ int platform::specialLogic(int collision, std::vector<platform>& plats){
         return 0;
 
     }
-    else if (collision == 3){ //has collided with a dissapearing platform
+    else if (collision == 3){ //has collided with a disappearing platform
         render = false;
         collide = false;
         return 0;
@@ -337,7 +342,7 @@ int platform::specialLogic(int collision, std::vector<platform>& plats){
     return 0;
 }
 
-//changes platform to a stable one, becuase you squashed a latnerfly
+//changes platform to a stable one, becuase you squashed a lanternrfly
 void platform::changeToGood(){
     plat_type = normal;
 }
@@ -354,4 +359,5 @@ void platform::change_jump(){
 
 int platform::manual_lerp(int start, int end, float ratio){
     return (end - start)*ratio;
+
 }
