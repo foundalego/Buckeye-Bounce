@@ -25,3 +25,4 @@ Copyright 2022 Fundamentals of Engineering for Honors Program, Department of Eng
 
 Added score, platform and character headers and objects myself onto this library file. They weren't working on their own so I went and chanegd the makefile and had to put them in here. A little janky but it works.
 
+- Ben Coughlin 2025
