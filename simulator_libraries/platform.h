@@ -15,11 +15,11 @@ enum identity {
     moving_y, //moves in the y direction
     floating_bug, //a bug floating in midair
     platform_with_bug, //a platform with a bug on top of it
-    moving_broken,
-    futuristic_good,
-    futuristic_broken,
-    hole,
-    spring
+    moving_broken, //moves but breaks instead of providing thrust
+    futuristic_good, //normal platform only spawns in space section
+    futuristic_broken, //broken platform only spawns in space section
+    hole, //immediately ends game
+    spring //gets rid of gravity temporarily
 };
 
 class platform{
@@ -61,5 +61,6 @@ class platform{
 };
 
 #endif
+
 
 ////////END OF platform.cpp///////
