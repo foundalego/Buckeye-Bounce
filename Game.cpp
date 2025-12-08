@@ -224,6 +224,8 @@ void Game::Initialize(){
     //generation loop
     for (int i = 0; i < 30; i++){
         pickSection(i);
+        LCD.FillRectangle(120, 390, i*5, 7);
+        LCD.Update();
     }
 }
 // take user input
@@ -1040,3 +1042,4 @@ void Game::spring2(int screenNumber){
 
 
 ////////END OF Game.cpp///////
+
