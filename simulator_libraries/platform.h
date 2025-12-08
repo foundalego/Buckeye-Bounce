@@ -15,11 +15,12 @@ enum identity {
     moving_y, //moves in the y direction
     floating_bug, //a bug floating in midair
     platform_with_bug, //a platform with a bug on top of it
-    moving_broken, //moves but breaks instead of providing thrust
-    futuristic_good, //normal platform only spawns in space section
-    futuristic_broken, //broken platform only spawns in space section
-    hole, //immediately ends game
-    spring //gets rid of gravity temporarily
+    moving_broken, //broken but it moves (wow)
+    futuristic_good, //smaller futuristic platform that si for late game
+    futuristic_broken, //like other brokens
+    futuristic_moving, //it moves!
+    hole, //if you hit this type it instantly kills you
+    spring //give a huge amount of jump height
 };
 
 class platform{
@@ -47,7 +48,7 @@ class platform{
     void draw_platform();
     void play_break_anim();
     int platform_update(); //reuturns pixels to move all platforms by if one has been jumped on
-    int specialLogic(int collision, std::vector<platform>& plats);
+    int specialLogic(int collision, std::vector<platform>& plats, int index);
     bool getRender();
     bool getCollide();
     identity get_identity(); //returns identity
@@ -56,11 +57,13 @@ class platform{
     platform();
     platform(identity type, int position);
     platform(identity type, int position, int height);
+
     FEHImage standard_plat_1, cloud_plat, evil_plat, lantern_r, lantern_rd, lantern_l, lantern_ld, wings_r, 
     wings_l, hole_png, spring_png_1, spring_png_2, future_g, future_b;
+
+    
 };
 
 #endif
-
 
 ////////END OF platform.cpp///////
