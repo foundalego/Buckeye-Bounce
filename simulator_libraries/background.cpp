@@ -1,4 +1,5 @@
 #include "background.h"
+#include <thread>
 
 Background::Background(back_type type, int pos)
     :setting(type), position(pos), needsErased(false)
@@ -54,51 +55,94 @@ void Background::changePosition(int move_y){
     position+=move_y;
 }
 
+void draw_task(FEHImage& png, int x, int y) {
+    png.Draw(x, y);
+}
+
 void Background::drawBack(){
-    if (setting == base){
-        base_png_1.Draw(0, position);
-        base_png_2.Draw(0, position + 286);
-        base_png_3.Draw(0, position + 572);
+    if (setting == base) {
+        std::thread t1(draw_task, std::ref(base_png_1), 0, position);
+        std::thread t2(draw_task, std::ref(base_png_2), 0, position + 286);
+        std::thread t3(draw_task, std::ref(base_png_3), 0, position + 572);
+
+        t1.join();
+        t2.join();
+        t3.join();
     }
+
     else if(setting == light){
-        light_png_1.Draw(0, position);
-        light_png_2.Draw(0, position + 286);
-        light_png_3.Draw(0, position + 572);
+        std::thread t1(draw_task, std::ref(light_png_1), 0, position);
+        std::thread t2(draw_task, std::ref(light_png_2), 0, position + 286);
+        std::thread t3(draw_task, std::ref(light_png_3), 0, position + 572);
+
+        t1.join();
+        t2.join();
+        t3.join();
     }
+
     else if(setting == light_t){
-        light_t_png_1.Draw(0, position);
-        light_t_png_2.Draw(0, position + 286);
-        light_t_png_3.Draw(0, position + 572);
+        std::thread t1(draw_task, std::ref(light_t_png_1), 0, position);
+        std::thread t2(draw_task, std::ref(light_t_png_2), 0, position + 286);
+        std::thread t3(draw_task, std::ref(light_t_png_3), 0, position + 572);
+
+        t1.join();
+        t2.join();
+        t3.join();
     }
     else if(setting == mid){
-        mid_png_1.Draw(0, position);
-        mid_png_2.Draw(0, position + 286);
-        mid_png_3.Draw(0, position + 572);
+        std::thread t1(draw_task, std::ref(mid_png_1), 0, position);
+        std::thread t2(draw_task, std::ref(mid_png_2), 0, position + 286);
+        std::thread t3(draw_task, std::ref(mid_png_3), 0, position + 572);
+
+        t1.join();
+        t2.join();
+        t3.join();
+        
     }
     else if(setting == mid_t){
-        mid_t_png_1.Draw(0, position);
-        mid_t_png_2.Draw(0, position + 286);
-        mid_t_png_3.Draw(0, position + 572);
+        std::thread t1(draw_task, std::ref(mid_t_png_1), 0, position);
+        std::thread t2(draw_task, std::ref(mid_t_png_2), 0, position + 286);
+        std::thread t3(draw_task, std::ref(mid_t_png_3), 0, position + 572);
+
+        t1.join();
+        t2.join();
+        t3.join();
     }
     else if(setting == moon){
-        moon_png_1.Draw(0, position);
-        moon_png_2.Draw(0, position + 286);
-        moon_png_3.Draw(0, position + 572);
+        std::thread t1(draw_task, std::ref(moon_png_1), 0, position);
+        std::thread t2(draw_task, std::ref(moon_png_2), 0, position + 286);
+        std::thread t3(draw_task, std::ref(moon_png_3), 0, position + 572);
+
+        t1.join();
+        t2.join();
+        t3.join();
     }
     else if(setting == stars){
-        stars_png_1.Draw(0, position);
-        stars_png_2.Draw(0, position + 286);
-        stars_png_3.Draw(0, position + 572);
+        std::thread t1(draw_task, std::ref(stars_png_1), 0, position);
+        std::thread t2(draw_task, std::ref(stars_png_2), 0, position + 286);
+        std::thread t3(draw_task, std::ref(stars_png_3), 0, position + 572);
+
+        t1.join();
+        t2.join();
+        t3.join();
     }
     else if(setting == stars_t){
-        stars_t_png_1.Draw(0, position);
-        stars_t_png_2.Draw(0, position + 286);
-        stars_t_png_3.Draw(0, position + 572);
+        std::thread t1(draw_task, std::ref(stars_t_png_1), 0, position);
+        std::thread t2(draw_task, std::ref(stars_t_png_2), 0, position + 286);
+        std::thread t3(draw_task, std::ref(stars_t_png_3), 0, position + 572);
+
+        t1.join();
+        t2.join();
+        t3.join();
     }
     else if(setting == space){
-        space_png_1.Draw(0, position);
-        space_png_2.Draw(0, position + 286);
-        space_png_3.Draw(0, position + 572);
+        std::thread t1(draw_task, std::ref(space_png_1), 0, position);
+        std::thread t2(draw_task, std::ref(space_png_2), 0, position + 286);
+        std::thread t3(draw_task, std::ref(space_png_3), 0, position + 572);
+
+        t1.join();
+        t2.join();
+        t3.join();
     }
 
 }
