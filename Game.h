@@ -1,3 +1,6 @@
+///////START OF game.h FILE/////
+
+
 #ifndef GAME_H
 #define GAME_H
 
@@ -9,8 +12,8 @@
 #include <cstdlib>
 #include <vector>
 
+
 class Game{
-//initialize variables
     public:
     Game();
     void Menu();
@@ -29,7 +32,6 @@ class Game{
     void Credits();
     void HowTo();
     void Initialize();
-    void LoadAssets();
     void Input();
     void Logic();
     void Render_all();
@@ -50,12 +52,32 @@ class Game{
     int springed;
     
     // procedural generation methods
-    void pickSection(int score);
-    void genericSection();
-    void dissapearingSection();
-    void movingSection();
-    void hardSection();
-    void futureSection();
+    void pickSection(int screenNumber);
+    void genericSection(int screenNumber);
+    void dissapearingSection(int screenNumber);
+    void movingSection(int screenNumber);
+    void hardSection(int screenNumber);
+    void futureSection(int screenNumber);
+    
+    void futureMovers(int screenNumber);
+    
+    void obstacle1(int screenNumber);
+    void obstacle2(int screenNumber);
+    void bugSection1(int screenNumber);
+    void bugSection2(int screenNumber);
+    void bugSection3(int screenNumber);
+    void bugSection4(int screenNumber);
+    void brokenFuture(int screenNumber);
+    void brokenSection(int screenNumber);
+    
+    void bugApocalypse(int screenNumber);
+    void mover2(int screenNumber);
+    void mover3(int screenNumber);
+    void spring1(int screenNumber);
+    void spring2(int screenNumber);
+
+
+
 
     int orderCount;
     std::vector<back_type> order;
@@ -66,5 +88,6 @@ class Game{
     FEHImage play, stats, how_to, credits, close, background, banner, score_card, logo, brutus, bug_1;
 };
 
-
 #endif
+
+///// END OF game.h FILE///////
