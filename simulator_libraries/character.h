@@ -1,3 +1,5 @@
+////////START OF character.h///////
+
 #ifndef CHARACTER_H
 #define CHARACTER_H
 
@@ -38,3 +40,5 @@ class character{
 
 
 #endif
+
+////////END OF character.h///////
